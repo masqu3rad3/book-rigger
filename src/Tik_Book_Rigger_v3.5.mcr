@@ -1048,7 +1048,9 @@ for x in PageArray where x.parent == $ do
 				setafterORT PageArray[i].modifiers["Turner"].gizmo.position.controller #constant
 				PageArray[i].modifiers["Turner"].gizmo.position.x_position.keys[3].intangenttype = #auto
 				setafterORT PageArray[i].modifiers["Lander"].bendangle.controller #constant
-				PageArray[i].modifiers["Lander"].bendangle.keys[3].outtangenttype = #auto
+				try(
+				PageArray[i].modifiers["Lander"].bendangle.keys[3].outtangenttype = #auto)
+				catch()
 			)
 		)
 		)
@@ -1654,30 +1656,6 @@ for i = 1 to page_list_array.count do
 	paramWire.connect MasCtrl.baseObject.FlipControl[#OldnessVal] page_list_array[i].modifiers[#Age].strength.controller[#Z] "OldnessVal"
 	----------------------------------------------------------
 	
-	/*
-	--("flip*"+(dongu as string)+"+"+(((pageCount-i)*dongu)-(pageCount*dongu))as string)
-	--paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].modifiers["Turner"].bendAngle.controller[2] ("(flip*15*160) +"+(((page_list_array.count-i)*15*160) as string))
-	paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].modifiers["Turner"].bendAngle.controller[2] ("flip*"+(dongu as string)+"+"+(((pageCount-i)*dongu)-(pageCount*dongu))as string)
-	paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].modifiers["Turner"].bendTo.controller[2] ("flip*"+(dongu as string)+"+"+(((pageCount-i)*dongu)-(pageCount*dongu))as string)
-	paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].modifiers["Turner"].gizmo.position.x_position.controller[2] ("flip*"+(dongu as string)+"+"+(((pageCount-i)*dongu)-(pageCount*dongu))as string)
-	paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].modifiers["Flexer"].bendAngle.controller[2] ("flip*"+(dongu as string)+"+"+(((pageCount-i)*dongu)-(pageCount*dongu))as string)
-	paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].modifiers["Lander"].bendAngle.controller[2] ("flip*"+(dongu as string)+"+"+(((pageCount-i)*dongu)-(pageCount*dongu))as string)
-	--------
-	paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].modifiers["Turner"].gizmo.rotation.z_rotation.controller[2] ("flip*"+(dongu as string)+"+"+(((pageCount-i)*dongu)-(pageCount*dongu))as string)
-	
-	*/
-	--paramWire.connect MasCtrl.FlipControl[#flip] page_list_array[i].rotation.y_rotation.controller[#Ease_Curve] ("radtodeg flip *"+deger as string)
-	
-	--shuffle
-	/*
-	paramWire.connect MasCtrl.FlipControl[#Shuffle] page_list_array[i].modifiers["Turner"].bendAngle.controller[1].controller[2] (("shuffle*"+(formattedprint i))+("-shuffle"))
-	paramWire.connect MasCtrl.FlipControl[#Shuffle] page_list_array[i].modifiers["Turner"].bendTo.controller[1].controller[2] (("shuffle*"+(formattedprint i))+("-shuffle"))
-	paramWire.connect MasCtrl.FlipControl[#Shuffle] page_list_array[i].modifiers["Flexer"].bendAngle.controller[1].controller[2] (("shuffle*"+(formattedprint i))+("-shuffle"))
-	paramWire.connect MasCtrl.FlipControl[#Shuffle] page_list_array[i].modifiers["Turner"].gizmo.position.x_position.controller[1].controller[2] (("shuffle*"+(formattedprint i))+("-shuffle"))
-	paramWire.connect MasCtrl.FlipControl[#Shuffle] page_list_array[i].modifiers["Lander"].bendAngle.controller[1].controller[2] (("shuffle*"+(formattedprint i))+("-shuffle"))
-	----------------------------
-	paramWire.connect MasCtrl.FlipControl[#Shuffle] page_list_array[i].modifiers["Turner"].gizmo.rotation.z_rotation.controller[1].controller[2] (("shuffle*"+(formattedprint i))+("-shuffle"))
-	*/
 	--multiplier	
 		
 		--FLEXER
@@ -1760,47 +1738,12 @@ for i = 1 to page_list_array.count do
 	
 	
 	)
-	
-
-	
-	---MULTIPLIER IPTAL EDILDIIII---
-	/*
-	addmultiplierCurve page_list_array[1].modifiers["Flexer"].bendAngle.controller[1].controller[1].controller[1].controller
-	paramWire.connect MasCtrl.FlipControl[#multiplier] page_list_array[1].modifiers["Flexer"].bendAngle.controller[1].controller[1].controller[1].controller[#Multiplier_Curve] ("multiplier")
-	*/
-	
-	
-	--addmultiplierCurve page_list_array[1].modifiers["Flexer"].bendAngle.controller[1].controller[1].controller
-	
-	--paramWire.connect MasCtrl.FlipControl[#multiplier] page_list_array[1].modifiers["Flexer"].bendAngle.controller[1].controller[1].controller[#Multiplier_Curve] ("multiplier")
-	
 
 )
 
 )--End of PageRig Function
 
-/*
-try(destroyDialog PRigv3 )catch()
-	
 
-	Fw1=30
-	Fw2=30
-rollout PRigv3 "Book Rigger V3" width:292 height:454
-(
-
-	spinner pageCountSP "Page Count" type:#integer range:[1,99999,50]
-	button pageRigBT "Rig the Book"
-	label licenseINF0 "Licensed To: " --across:2
-	label licenseINF1 "USERNAME"
-	on pageRigBT pressed do
-	(
-		pageRig pageCountSP.value
-	)
-)
-createDialog PRigV3 160 90
-
-)
-*/
 
 /* ===== tail: only launch UI if licensed ===== */
 
