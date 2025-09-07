@@ -1029,7 +1029,9 @@ for x in PageArray where x.parent == $ do
 				setafterORT PageArray[i].modifiers["Turner"].gizmo.position.controller #linear
 				PageArray[i].modifiers["Turner"].gizmo.position.x_position.keys[3].intangenttype = #linear
 				setafterORT PageArray[i].modifiers["Lander"].bendangle.controller #linear
-				PageArray[i].modifiers["Lander"].bendangle.keys[3].outtangenttype = #linear
+				try
+				(PageArray[i].modifiers["Lander"].bendangle.keys[3].outtangenttype = #linear)
+				catch()
 				)
 			)
 			else
@@ -1074,8 +1076,8 @@ for x in PageArray where x.parent == $ do
 				setafterORT PageArray[i].modifiers["Turner"].gizmo.position.controller #constant
 				PageArray[i].modifiers["Turner"].gizmo.position.x_position.keys[3].intangenttype = #auto
 				setafterORT PageArray[i].modifiers["Lander"].bendangle.controller #constant
-				PageArray[i].modifiers["Lander"].bendangle.keys[3].outtangenttype = #auto
-				PageArray[i].modifiers["Lander"].bendangle.keys[3].intangenttype=#auto
+				try(PageArray[i].modifiers["Lander"].bendangle.keys[3].outtangenttype = #auto)catch()
+				try(PageArray[i].modifiers["Lander"].bendangle.keys[3].intangenttype=#auto)catch()
 			)
 		)
 	)
